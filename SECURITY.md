@@ -63,7 +63,7 @@ EIOC does not contain executable code. Security issues therefore refer to **conc
 
 Please submit a private disclosure via email:
 
-📧 **[security contact to be added]**
+📧 **narnaiezzsshaa@proton.me**
 
 Include:
 
