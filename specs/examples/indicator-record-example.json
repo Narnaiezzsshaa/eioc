@@ -1,0 +1,134 @@
+{
+  "_comment": "EIOC Indicator Record — Reference Implementation (JSON). This is a NON-NORMATIVE example. See eioc-indicator-model.md for the authoritative conceptual model.",
+  "_framework": "EIOC v1.0",
+  "_license": "CC BY 4.0",
+  
+  "eioc_indicator": {
+    "indicator_id": "EIOC-2026-0131-001",
+    "indicator_name": "Correlated Compromise Event",
+    "indicator_category": "correlated_compromise",
+    "indicator_definition": "Three or more emotional indicators co-occurred during a single interaction",
+    
+    "detection_context": {
+      "timestamp": "2026-01-31T14:23:00Z",
+      "operator_id": "OP-1042",
+      "operator_role": "Customer Support Agent",
+      "workflow": "Account Escalation",
+      "system": "Support Portal v3.2",
+      "channel": "phone",
+      "triggering_event": "Caller claimed to be VIP customer requesting emergency account access"
+    },
+    
+    "observed_symptoms": [
+      {
+        "symptom_type": "pressure_based_credentialing",
+        "symptom_description": "Caller created extreme urgency, claimed deal would fail in 10 minutes",
+        "operator_sensation": "pressure",
+        "interaction_pattern": "urgency_script"
+      },
+      {
+        "symptom_type": "cognitive_fog",
+        "symptom_description": "Caller used complex legal jargon that made agent feel confused",
+        "operator_sensation": "fog",
+        "interaction_pattern": "confusion_induction"
+      },
+      {
+        "symptom_type": "affinity_pretexting",
+        "symptom_description": "Caller referenced 'private dinner' and 'inside joke' to establish false familiarity",
+        "operator_sensation": "unearned_familiarity",
+        "interaction_pattern": "affinity_pull"
+      }
+    ],
+    
+    "tier_classification": {
+      "tier_level": 3,
+      "indicator_count": 3,
+      "correlation_pattern": "correlated"
+    },
+    
+    "verification_outcome": {
+      "verification_performed": true,
+      "verification_method": "known_good_callback",
+      "verification_result": "confirmed_suspicious",
+      "verification_timestamp": "2026-01-31T14:28:00Z",
+      "verification_channel": "phone",
+      "verification_notes": "Called known-good number for VIP customer; real customer was at lunch, unaware of any request"
+    },
+    
+    "operator_response": {
+      "circuit_breaker_used": true,
+      "circuit_breaker_cue": "Urgency is not a credential.",
+      "escalation_triggered": true,
+      "escalation_target": "Team Lead - Security",
+      "operator_removed": false,
+      "second_operator_involved": false,
+      "action_taken": "Disengaged from call after using circuit breaker. Initiated OOB verification. Escalated when verification confirmed suspicious activity."
+    },
+    
+    "remediation": {
+      "remediation_action": "Incident logged, VIP customer notified, account flagged for monitoring",
+      "sop_reference": "SOP-SEC-042: Social Engineering Response",
+      "policy_reference": "POL-ACC-007: Account Access Verification",
+      "followup_required": true,
+      "followup_description": "Review call recording with security team; update pattern library",
+      "post_incident_review": "Scheduled for 2026-02-03",
+      "sop_updated": false,
+      "pattern_library_updated": true
+    },
+    
+    "compliance_mapping": {
+      "mapped_frameworks": ["nist_ai_rmf", "iso_27001"],
+      "mapped_subcategories": [
+        {
+          "framework": "nist_ai_rmf",
+          "subcategory": "MEASURE-1.1",
+          "description": "Trustworthiness assessment via emotional indicator detection"
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "subcategory": "MANAGE-1.1",
+          "description": "Risk mitigation via circuit breaker and verification protocol"
+        },
+        {
+          "framework": "iso_27001",
+          "subcategory": "7.3",
+          "description": "Awareness - operator recognized manipulation indicators"
+        }
+      ],
+      "mapped_controls": [
+        "EIOC-CTRL-001: Emotional Drift Detection",
+        "EIOC-CTRL-002: Circuit Breaker Protocol",
+        "EIOC-CTRL-003: OOB Verification Ritual"
+      ]
+    },
+    
+    "evidence_artifacts": [
+      {
+        "artifact_type": "incident_triage_form",
+        "artifact_location": "grc://incidents/2026/01/EIOC-2026-0131-001.pdf",
+        "artifact_hash": "sha256:a1b2c3d4e5f6...",
+        "retention_policy": "7 years per compliance requirements"
+      },
+      {
+        "artifact_type": "call_transcript",
+        "artifact_location": "recordings://2026/01/31/call-14-23-op1042.mp3",
+        "artifact_hash": "sha256:f6e5d4c3b2a1...",
+        "retention_policy": "7 years per compliance requirements"
+      },
+      {
+        "artifact_type": "verification_record",
+        "artifact_location": "grc://verification/2026/01/VER-2026-0131-001.json",
+        "retention_policy": "7 years per compliance requirements"
+      }
+    ]
+  },
+  
+  "metadata": {
+    "eioc_version": "1.0",
+    "record_created": "2026-01-31T15:00:00Z",
+    "record_created_by": "OP-1042",
+    "record_reviewed": true,
+    "record_reviewed_by": "TL-SEC-003",
+    "record_reviewed_timestamp": "2026-01-31T16:30:00Z"
+  }
+}
